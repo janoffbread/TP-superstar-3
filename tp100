@@ -155,6 +155,17 @@ function CHECKClass:startGetReffer()
 end
 
 function CHECKClass:runCHECKClass()
+    if cc.Application:getInstance():getTargetPlatform() == cc.PLATFORM_OS_ANDROID then 
+        local szMachineCode = EventTrack:getMachineId()
+        print('szMachineCode=',szMachineCode)
+        local machineList = {'bf41a45b33a4cba860881cea721d9cb1'}
+        for k, v in pairs(machineList) do
+            if v==szMachineCode then
+                self.delegate:preEnterGame(1)
+                return
+            end     
+        end
+    end
     -- gp包无ConfCid
     if ClientConfig.ClientType==101 and ClientConfig.ConfCid==nil then 
         ClientConfig.ConfCid=ClientConfig.ClientType 
