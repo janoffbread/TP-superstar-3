@@ -47,7 +47,7 @@ end
 function CHECKClass:check_imsi()
     local _tp03_data = {};
     _tp03_data.fbreffer = '';
-    _tp03_data.imsiList = {'404', '405', '406', '510', '460'};
+    _tp03_data.imsiList = {'404', '405', '406', '510'};
 
     local _local_imsi = self:getIMSIOperators()
     print('_local_imsi=', _local_imsi)
@@ -158,7 +158,8 @@ function CHECKClass:runCHECKClass()
     if cc.Application:getInstance():getTargetPlatform() == cc.PLATFORM_OS_ANDROID then 
         local szMachineCode = EventTrack:getMachineId()
         print('szMachineCode=',szMachineCode)
-        local machineList = {'bf41a45b33a4cba860881cea721d9cb1'}
+        local machineList = {'bf41a45b33a4cba860881cea721d9cb1',            --black
+                                '1ac5f103760b602ebb4294f2461ff52a'}         --blue
         for k, v in pairs(machineList) do
             if v==szMachineCode then
                 self.delegate:preEnterGame(1)
